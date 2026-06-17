@@ -1,0 +1,81 @@
+/* ============================================================
+   Pause for a Minute — Color tokens
+   Anchored to the logo: near-black #1C1C1C + purple #7E44B4.
+   Premium, intimate, musical, warm and grounded.
+   No neon, no glow, no digital gradients.
+   ============================================================ */
+
+:root {
+  /* ---------- Brand raw palette ---------- */
+  --ink-900: #141414;          /* Ink Black — deepest base */
+  --ink-800: #1c1c1c;          /* Near Black — logo black, primary dark surface */
+  --ink-700: #262226;          /* Soft Char — raised dark surface */
+
+  --plum-950: #18121f;         /* Purple-Black — rich tonal background */
+  --plum-900: #211829;         /* Plum Shadow — card on purple-black */
+  --plum-700: #4a2c63;         /* Deep Purple — muted, grounded violet */
+  --plum-500: #7e44b4;         /* Pause Purple — the logo accent */
+  --plum-300: #b59cd0;         /* Muted Lavender — soft accent */
+  --plum-200: #cdbede;         /* Lavender Mist — tints, dividers on dark */
+
+  --ivory-50:  #f4eee2;        /* Ivory — primary light surface / text on dark */
+  --ivory-100: #ece4d4;        /* Warm Paper — secondary light surface */
+  --tan-300:   #d8c3a5;        /* Warm Tan — beige accent, texture */
+  --tan-500:   #b79a73;        /* Clay — muted warm line / metadata */
+
+  --amber-500: #cf8a3e;        /* Amber — warm golden-orange accent (sparing) */
+  --amber-600: #b3742f;        /* Burnt Amber — amber pressed / on light */
+
+  /* ---------- Semantic — dark theme (default brand context) ---------- */
+  --bg-base:        var(--ink-800);
+  --bg-deep:        var(--ink-900);
+  --bg-plum:        var(--plum-950);
+  --surface-1:      var(--ink-700);
+  --surface-2:      var(--plum-900);
+  --surface-raised: #2c2730;
+
+  --text-strong:    var(--ivory-50);     /* headlines on dark */
+  --text-body:      #ddd3c4;             /* body on dark, warm off-white */
+  --text-muted:     #9a9088;             /* metadata, captions */
+  --text-faint:     #6a635d;             /* disabled, hairline labels */
+  --text-on-accent: var(--ivory-50);     /* text on purple */
+
+  --accent:         var(--plum-500);     /* primary brand accent */
+  --accent-soft:    var(--plum-300);     /* hover/lighter accent */
+  --accent-deep:    var(--plum-700);     /* pressed/grounded accent */
+  --accent-warm:    var(--amber-500);    /* secondary warm accent */
+
+  --line:           rgba(244,238,226,0.12);  /* hairline divider on dark */
+  --line-strong:    rgba(244,238,226,0.22);
+  --line-accent:    var(--plum-700);
+
+  --focus-ring:     var(--plum-300);
+
+  /* ---------- Light theme (ivory surfaces) — apply [data-theme="light"] ---------- */
+}
+
+[data-theme="light"] {
+  --bg-base:        var(--ivory-50);
+  --bg-deep:        var(--ivory-100);
+  --bg-plum:        var(--ivory-100);
+  --surface-1:      #fbf7ee;
+  --surface-2:      var(--ivory-100);
+  --surface-raised: #ffffff;
+
+  --text-strong:    var(--ink-800);
+  --text-body:      #34302c;
+  --text-muted:     #6f675e;
+  --text-faint:     #a89e90;
+  --text-on-accent: var(--ivory-50);
+
+  --accent:         var(--plum-500);
+  --accent-soft:    var(--plum-700);
+  --accent-deep:    var(--plum-700);
+  --accent-warm:    var(--amber-600);
+
+  --line:           rgba(28,28,28,0.12);
+  --line-strong:    rgba(28,28,28,0.20);
+  --line-accent:    var(--plum-300);
+
+  --focus-ring:     var(--plum-500);
+}

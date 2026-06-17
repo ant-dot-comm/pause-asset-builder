@@ -1,0 +1,86 @@
+<!-- @dsCard group="Components" viewport="700x620" name="Core" subtitle="Buttons, badges, tags, avatars, inputs, marks & dividers" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg-base);color:var(--text-body);font-family:var(--font-body);padding:26px;}
+  .sec{margin-bottom:24px}
+  .lbl{font-family:var(--font-meta);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;display:block}
+  .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Button, Badge, Tag, Kicker, Avatar, Card, IconButton, Input, PauseMark, BrushDivider } = window.PauseForAMinuteDesignSystem_16ad29;
+function Demo(){
+  return (
+    <div>
+      <div className="sec">
+        <span className="lbl">Buttons</span>
+        <div className="row">
+          <Button variant="primary">Listen now</Button>
+          <Button variant="secondary">Browse episodes</Button>
+          <Button variant="ghost">Pause</Button>
+          <Button variant="warm">Subscribe</Button>
+          <Button variant="primary" size="sm">Small</Button>
+          <Button variant="primary" disabled>Disabled</Button>
+        </div>
+      </div>
+
+      <div className="sec">
+        <span className="lbl">Badges & Tags</span>
+        <div className="row">
+          <Badge tone="purple">Episode 47</Badge>
+          <Badge tone="amber" solid>New</Badge>
+          <Badge tone="neutral">Season 3</Badge>
+          <Tag>Discipline</Tag>
+          <Tag active>Jazz</Tag>
+          <Tag>Failure</Tag>
+        </div>
+      </div>
+
+      <div className="sec">
+        <span className="lbl">Kickers & Divider</span>
+        <div className="row" style={{gap:'28px'}}>
+          <Kicker tone="purple">New Episode · Every Tuesday</Kicker>
+          <Kicker tone="amber">Pause Prompt</Kicker>
+        </div>
+        <div style={{marginTop:'16px',maxWidth:'420px'}}><BrushDivider motif="bars" /></div>
+      </div>
+
+      <div className="sec">
+        <span className="lbl">Avatars, Icon Buttons & Mark</span>
+        <div className="row">
+          <Avatar name="Brandon Commodore" size={52} />
+          <Avatar name="Maya Okonkwo" size={52} ring={false} />
+          <IconButton variant="solid" size={52} label="Play">▶</IconButton>
+          <IconButton variant="soft" size={52} label="Pause"><PauseMark size={20} arc={false} color="var(--accent-soft)" accent="var(--accent-soft)" /></IconButton>
+          <IconButton variant="outline" size={52} label="Share">↗</IconButton>
+          <PauseMark size={56} color="var(--ivory-50)" />
+        </div>
+      </div>
+
+      <div className="sec">
+        <span className="lbl">Input + Card</span>
+        <div className="row" style={{maxWidth:'440px'}}>
+          <Input type="email" placeholder="your@email.com" />
+        </div>
+        <div style={{marginTop:'14px',maxWidth:'440px'}}>
+          <Card accent>
+            <Kicker>Episode 47 · Season 3</Kicker>
+            <h3 style={{fontFamily:'var(--font-editorial)',color:'var(--text-strong)',margin:'10px 0 6px',fontSize:'22px',fontWeight:500}}>The Discipline Behind the Drift</h3>
+            <p style={{margin:0,color:'var(--text-muted)',fontSize:'14px'}}>with Maya Okonkwo — on craft, doubt, and showing up anyway.</p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body></html>

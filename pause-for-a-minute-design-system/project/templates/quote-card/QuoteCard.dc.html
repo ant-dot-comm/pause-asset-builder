@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Quote Card" description="Square 1080×1080 pull-quote card with attribution and logo." -->
+<helmet>
+  <script src="./ds-base.js"></script>
+</helmet>
+<div style="width:1080px;height:1080px;background:#1c1c1c;position:relative;padding:96px;display:flex;flex-direction:column;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden;box-sizing:border-box">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(244,238,226,0.035) 1.5px,transparent 1.5px);background-size:7px 7px"></div>
+  <div style="position:relative">
+    <span style="font-family:'Averia Sans Libre',sans-serif;font-weight:700;font-size:200px;line-height:0.6;color:#7e44b4;display:block;height:110px">&ldquo;</span>
+    <blockquote style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:64px;line-height:1.28;color:#f4eee2;margin:0 0 48px">Some of the best things I&rsquo;ve made came right after I stopped trying so hard.</blockquote>
+    <div style="display:flex;align-items:center;gap:22px">
+      <span style="display:flex;gap:6px">
+        <span style="width:8px;height:34px;border-radius:4px;background:#7e44b4"></span>
+        <span style="width:8px;height:34px;border-radius:4px;background:#7e44b4"></span>
+      </span>
+      <span style="font-size:26px;color:#ddd3c4">Maya Okonkwo &middot; <span style="color:#9a9088">Episode 47</span></span>
+    </div>
+  </div>
+  <img src="../../assets/logos/pause-logo-ivory.svg" style="position:absolute;bottom:64px;right:96px;width:150px;opacity:0.9" alt="Pause for a Minute">
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:1080}}"></script>
+</body>
+</html>

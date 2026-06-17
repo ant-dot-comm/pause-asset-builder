@@ -1,0 +1,66 @@
+<!-- @dsCard group="Templates" viewport="1240x880" name="Social & Podcast Templates" subtitle="Covers, quote cards, guest announcements, audiogram, story & thumbnail" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Pause for a Minute — Template Kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg-deep);color:var(--text-body);font-family:var(--font-body);padding:48px 40px 80px}
+  .head{max-width:1160px;margin:0 auto 44px}
+  .head h1{font-family:var(--font-display);font-weight:700;font-size:40px;color:var(--text-strong);margin:0 0 8px}
+  .head p{font-family:var(--font-editorial);font-style:italic;font-size:19px;color:var(--text-muted);margin:0;max-width:54ch}
+  .grid{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px 36px;align-items:flex-start}
+  .item{display:flex;flex-direction:column;gap:12px}
+  .frame{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+  .cap{font-family:var(--font-meta);font-size:12px;letter-spacing:.06em}
+  .cap b{color:var(--text-strong);font-weight:600}
+  .cap span{color:var(--text-faint);margin-left:8px}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="Shared.jsx"></script>
+<script type="text/babel" src="Covers.jsx"></script>
+<script type="text/babel" src="Social.jsx"></script>
+<script type="text/babel" src="Wide.jsx"></script>
+</head>
+<body>
+<div class="head">
+  <h1>Template Kit</h1>
+  <p>Drop-in layouts for every post — built on the brand tokens, logo and marks. Swap the placeholder portraits and copy.</p>
+</div>
+<div id="root"></div>
+<script type="text/babel">
+const { PodcastCover, EpisodeCover, QuoteCard, GuestAnnouncement, PausePrompt, NewEpisodeLive, YouTubeThumbnail, InstagramStory, Audiogram } = window;
+
+function Frame({ Comp, w, h, target, label, ratio }){
+  const scale = target / w;
+  return (
+    <div className="item">
+      <div className="frame" style={{ width: target, height: h * scale }}>
+        <div style={{ width: w, height: h, transform: `scale(${scale})`, transformOrigin: 'top left' }}>
+          <Comp />
+        </div>
+      </div>
+      <div className="cap"><b>{label}</b><span>{ratio}</span></div>
+    </div>
+  );
+}
+
+function Gallery(){
+  return (
+    <div className="grid">
+      <Frame Comp={PodcastCover} w={1080} h={1080} target={360} label="Main Podcast Cover" ratio="1:1" />
+      <Frame Comp={EpisodeCover} w={1080} h={1080} target={360} label="Episode Cover" ratio="1:1" />
+      <Frame Comp={GuestAnnouncement} w={1080} h={1080} target={360} label="Guest Announcement" ratio="1:1" />
+      <Frame Comp={QuoteCard} w={1080} h={1080} target={360} label="Quote Card" ratio="1:1" />
+      <Frame Comp={PausePrompt} w={1080} h={1080} target={360} label="Pause Prompt" ratio="1:1" />
+      <Frame Comp={NewEpisodeLive} w={1080} h={1080} target={360} label="New Episode Is Live" ratio="1:1" />
+      <Frame Comp={Audiogram} w={1080} h={1080} target={360} label="Audiogram Cover" ratio="1:1" />
+      <Frame Comp={YouTubeThumbnail} w={1280} h={720} target={560} label="YouTube Thumbnail" ratio="16:9" />
+      <Frame Comp={InstagramStory} w={1080} h={1920} target={300} label="Instagram Story" ratio="9:16" />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Gallery />);
+</script>
+</body></html>
