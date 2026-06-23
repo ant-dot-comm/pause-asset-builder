@@ -724,7 +724,7 @@ function PauseBars({ height = 30, color = palette.plum500, style = {} }) {
   );
 }
 
-function Photo({ data, label = 'Guest Photo', treatment = 'plum', radius = 0, style = {} }) {
+function Photo({ data, treatment = 'plum', radius = 0, style = {} }) {
   const treatments = {
     plum: 'linear-gradient(135deg, #2a1d38 0%, #4a2c63 60%, #1c1c1c 100%)',
     warm: 'linear-gradient(135deg, #2a2018 0%, #4a3826 55%, #1c1c1c 100%)',
@@ -741,10 +741,7 @@ function Photo({ data, label = 'Guest Photo', treatment = 'plum', radius = 0, st
       ) : data.image ? (
         <img src={data.image} style={{ objectFit: data.imageFit || 'cover' }} alt="" />
       ) : (
-        <>
-          <div className="photo-grain" />
-          <span>{label}</span>
-        </>
+        <div className="photo-grain" />
       )}
     </div>
   );

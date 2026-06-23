@@ -15,5 +15,6 @@ Core rules:
 - Use existing brand assets and components: `TwoColorLogo`, `LogoAvatar`, `KickerPill`, `Texture`, `Deco`, `PaletteDropdown`, and `BrushClockLoader`.
 - Do not reintroduce corner flourishes.
 - For horizontal Episode Cover and Guest Announcement photo layouts, keep the rounded-square `LogoAvatar` as the logo treatment and avoid duplicate standalone logos.
+- Image uploads are optional; empty image areas should remain clean branded space without placeholder labels in exported templates.
 - Preserve image compression for uploads and PNG transparency for Main Cover cutouts.
 - After substantive edits, run `npm run build` and check lints for changed files.

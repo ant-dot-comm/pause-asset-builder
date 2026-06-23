@@ -27,6 +27,7 @@ Use these rules when generating or editing this project. The app is in a client-
 ## Template Layout Rules
 
 - Preserve vertical and horizontal image orientation switches for image templates.
+- Image uploads are optional. If no image is present, keep the layout and branded texture/empty space, but do not show placeholder labels like "Guest Photo" inside exported templates.
 - Keep image-led templates protected with dark overlays, gradient fades, or pill treatments so text remains readable on arbitrary uploads.
 - Kicker and episode pills should use the existing blurred pill style, with independent palette-based background/text colors where available.
 - Main Cover uses the two-color logo, hosted-by line, brush divider, tagline, and optional PNG cutout aligned flush right.
