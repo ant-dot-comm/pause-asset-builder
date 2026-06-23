@@ -16,6 +16,7 @@ import './styles.css';
 
 const LOGO = '/brand/assets/logos/';
 const DECORATION = '/brand/assets/decorations/';
+const IMAGE_ASSET = '/brand/assets/images/';
 const TEXTURE = '/brand/assets/textures/';
 const IMAGE_COMPRESSION_OPTIONS = {
   maxSizeMB: 1,
@@ -24,10 +25,10 @@ const IMAGE_COMPRESSION_OPTIONS = {
 };
 const MAIN_COVER_HOST = 'Hosted by Brandon Commodore';
 const MAIN_COVER_TAGLINE = 'different paths. familiar truths.';
+const MAIN_COVER_SECONDARY_IMAGE = `${IMAGE_ASSET}main-cover-bdon.png`;
 const DECORATION_SIZES = {
   'bars-divider': [248, 22],
   'brush-rule': [248, 18],
-  'corner-flourish': [110, 110],
   'sound-bars': [172, 58],
   'tick-strip': [180, 22],
 };
@@ -53,6 +54,27 @@ const palette = {
   amber600: '#b3742f',
 };
 
+const PALETTE_OPTIONS = [
+  ['Ink 900', palette.ink900],
+  ['Ink 800', palette.ink800],
+  ['Ink 700', palette.ink700],
+  ['Plum 950', palette.plum950],
+  ['Plum 900', palette.plum900],
+  ['Plum 700', palette.plum700],
+  ['Pause Purple', palette.plum500],
+  ['Muted Lavender', palette.plum300],
+  ['Lavender Mist', palette.plum200],
+  ['Ivory', palette.ivory50],
+  ['Warm Paper', palette.ivory100],
+  ['Warm Tan', palette.tan300],
+  ['Clay', palette.tan500],
+  ['Amber', palette.amber500],
+  ['Deep Amber', palette.amber600],
+  ['Text Body', palette.textBody],
+  ['Text Muted', palette.textMuted],
+  ['Text Faint', palette.textFaint],
+];
+
 const defaults = {
   podcastCover: {
     host: MAIN_COVER_HOST,
@@ -61,11 +83,15 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
     image: '',
     imageFit: 'cover',
+    secondaryImage: MAIN_COVER_SECONDARY_IMAGE,
   },
   episodeCover: {
     episode: 'EP 47',
@@ -77,6 +103,9 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -93,6 +122,11 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    pillBg: palette.ink900,
+    pillText: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -108,6 +142,9 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -115,12 +152,15 @@ const defaults = {
     imageFit: 'cover',
   },
   pausePrompt: {
-    kicker: 'Pause Prompt',
+    kicker: 'Inner Question',
     prompt: 'What are you still doing only because you started it?',
     bg: palette.plum950,
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -136,6 +176,9 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -150,6 +193,9 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -164,6 +210,9 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoPrimary: palette.ivory50,
+    logoSecondary: palette.plum500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -180,6 +229,7 @@ const defaults = {
     accent: palette.plum500,
     accentSoft: palette.plum300,
     accentWarm: palette.amber500,
+    logoColor: palette.ivory50,
     textStrong: palette.ivory50,
     textBody: palette.textBody,
     textMuted: palette.textMuted,
@@ -190,15 +240,15 @@ const defaults = {
 };
 
 const templates = [
-  { id: 'podcastCover', name: 'Main Cover', ratio: '1:1', size: [1080, 1080], component: PodcastCover, fields: ['host', 'tagline'], colorFields: ['bg', 'accent', 'accentSoft', 'textBody', 'textMuted'] },
-  { id: 'episodeCover', name: 'Episode Cover', ratio: '1:1', size: [1080, 1080], component: EpisodeCover, fields: ['episode', 'season', 'title', 'guest', 'description'], image: true, orientation: true, colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'textStrong', 'textMuted'] },
-  { id: 'guestAnnouncement', name: 'Guest Announcement', ratio: '1:1', size: [1080, 1080], component: GuestAnnouncement, fields: ['kicker', 'label', 'guest', 'description'], image: true, orientation: true, colorFields: ['bg', 'accentSoft', 'accentWarm', 'textStrong', 'textBody'] },
-  { id: 'quoteCard', name: 'Quote', ratio: '1:1', size: [1080, 1080], component: QuoteCard, fields: ['quote', 'author', 'meta'], colorFields: ['bg', 'accent', 'textStrong', 'textBody', 'textMuted'] },
-  { id: 'pausePrompt', name: 'Prompt', ratio: '1:1', size: [1080, 1080], component: PausePrompt, fields: ['kicker', 'prompt'], colorFields: ['bg', 'accent', 'accentWarm', 'textStrong'] },
-  { id: 'newEpisode', name: 'Live Post', ratio: '1:1', size: [1080, 1080], component: NewEpisodeLive, fields: ['badge', 'meta', 'title', 'cta'], colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'textStrong', 'textMuted'] },
-  { id: 'audiogram', name: 'Audiogram', ratio: '1:1', size: [1080, 1080], component: Audiogram, fields: ['meta', 'quote', 'guest'], colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'textStrong', 'textMuted'] },
-  { id: 'youtube', name: 'YouTube Thumbnail', ratio: '16:9', size: [1280, 720], component: YouTubeThumbnail, fields: ['meta', 'title', 'guest'], image: true, orientation: true, colorFields: { portrait: ['bg', 'accent', 'accentSoft', 'textStrong'], landscape: ['bg', 'accent', 'accentSoft', 'accentWarm', 'textStrong'] } },
-  { id: 'story', name: 'Instagram Story', ratio: '9:16', size: [1080, 1920], component: InstagramStory, fields: ['kicker', 'guest', 'description', 'cta'], image: true, orientation: true, colorFields: { portrait: ['bg', 'accentWarm', 'textStrong'], landscape: ['bg', 'accent', 'accentWarm', 'textStrong', 'textBody'] } },
+  { id: 'podcastCover', name: 'Main Cover', ratio: '1:1', size: [1080, 1080], component: PodcastCover, fields: ['host', 'tagline'], secondaryPng: true, colorFields: ['bg', 'accent', 'accentSoft', 'logoPrimary', 'logoSecondary', 'textBody', 'textMuted'] },
+  { id: 'episodeCover', name: 'Episode Cover', ratio: '1:1', size: [1080, 1080], component: EpisodeCover, fields: ['episode', 'season', 'title', 'guest', 'description'], image: true, orientation: true, colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong', 'textMuted'] },
+  { id: 'guestAnnouncement', name: 'Guest Announcement', ratio: '1:1', size: [1080, 1080], component: GuestAnnouncement, fields: ['kicker', 'label', 'guest', 'description'], image: true, orientation: true, colorFields: ['bg', 'accentSoft', 'accentWarm', 'pillBg', 'pillText', 'logoPrimary', 'logoSecondary', 'textStrong', 'textBody'] },
+  { id: 'quoteCard', name: 'Quote', ratio: '1:1', size: [1080, 1080], component: QuoteCard, fields: ['quote', 'author', 'meta'], colorFields: ['bg', 'accent', 'logoColor', 'textStrong', 'textBody', 'textMuted'] },
+  { id: 'pausePrompt', name: 'Prompt', ratio: '1:1', size: [1080, 1080], component: PausePrompt, fields: ['kicker', 'prompt'], colorFields: ['bg', 'accent', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong'] },
+  { id: 'newEpisode', name: 'Live Post', ratio: '1:1', size: [1080, 1080], component: NewEpisodeLive, fields: ['badge', 'meta', 'title', 'cta'], colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong', 'textMuted'] },
+  { id: 'audiogram', name: 'Audiogram', ratio: '1:1', size: [1080, 1080], component: Audiogram, fields: ['meta', 'quote', 'guest'], colorFields: ['bg', 'accent', 'accentSoft', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong', 'textMuted'] },
+  { id: 'youtube', name: 'YouTube Thumbnail', ratio: '16:9', size: [1280, 720], component: YouTubeThumbnail, fields: ['meta', 'title', 'guest'], image: true, orientation: true, colorFields: { portrait: ['bg', 'accent', 'accentSoft', 'logoPrimary', 'logoSecondary', 'textStrong'], landscape: ['bg', 'accent', 'accentSoft', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong'] } },
+  { id: 'story', name: 'Instagram Story', ratio: '9:16', size: [1080, 1920], component: InstagramStory, fields: ['kicker', 'guest', 'description', 'cta'], image: true, orientation: true, colorFields: { portrait: ['bg', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong'], landscape: ['bg', 'accent', 'accentWarm', 'logoPrimary', 'logoSecondary', 'textStrong', 'textBody'] } },
 ];
 
 function App() {
@@ -211,14 +261,14 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-ivory-50 text-ink-900">
-      <header className="border-b border-ink-800/10 bg-ivory-50/95">
+    <div className="app-shell min-h-screen text-ivory-50">
+      <header className="app-header border-b">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 lg:px-8">
           <a href="#" className="flex items-center gap-3">
             <img src={`${LOGO}pause-mark-purple.svg`} className="h-9 w-9" alt="" />
             <span className="font-display text-xl font-bold">Pause Asset Builder</span>
           </a>
-          <nav className="flex rounded-full border border-ink-800/10 bg-white p-1 text-sm font-semibold shadow-warm">
+          <nav className="app-nav flex rounded-full border p-1 text-sm font-semibold shadow-warm">
             <a className={`nav-pill ${page === 'builder' ? 'active' : ''}`} href="#">Builder</a>
             <a className={`nav-pill ${page === 'styleguide' ? 'active' : ''}`} href="#styleguide">Styleguide</a>
           </nav>
@@ -273,8 +323,8 @@ function Builder() {
 
   return (
     <main className="mx-auto grid max-w-[1500px] gap-6 px-5 py-6 lg:grid-cols-[300px_minmax(0,1fr)_360px] lg:px-8">
-      <aside className="rounded-lg border border-ink-800/10 bg-white p-3 shadow-warm">
-        <div className="mb-3 flex items-center gap-2 px-2 pt-1 text-xs font-bold uppercase tracking-[0.18em] text-ink-800/60">
+      <aside className="app-panel rounded-lg border p-3 shadow-warm">
+        <div className="mb-3 flex items-center gap-2 px-2 pt-1 text-xs font-bold uppercase tracking-[0.18em] text-plum-300">
           <FileImage size={15} /> Templates
         </div>
         <div className="grid gap-2">
@@ -360,22 +410,29 @@ function PreviewCanvas({ template, data, refNode }) {
 
 function EditorPanel({ template, data, updateTemplate, resetActive, setImageLoading }) {
   const { register, reset } = useForm({ values: data });
+  const [openColorField, setOpenColorField] = useState(null);
 
   useEffect(() => reset(data), [data, reset]);
 
   const setField = (field, value) => updateTemplate({ [field]: value });
-  const uploadImage = async (event) => {
+  const uploadImage = async (event, { field = 'image', pngOnly = false, compress = true } = {}) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    if (pngOnly && file.type !== 'image/png') {
+      alert('Please upload a PNG so the cutout/transparency stays intact.');
+      event.target.value = '';
+      return;
+    }
+
     setImageLoading(true);
     try {
-      const compressedFile = await imageCompression(file, IMAGE_COMPRESSION_OPTIONS);
-      const image = await readFileAsDataUrl(compressedFile);
-      updateTemplate({ image });
+      const imageFile = compress ? await imageCompression(file, IMAGE_COMPRESSION_OPTIONS) : file;
+      const image = await readFileAsDataUrl(imageFile);
+      updateTemplate({ [field]: image });
     } catch (error) {
       console.error('Image compression failed', error);
-      alert('That image could not be compressed. Try a smaller photo or a different file.');
+      alert('That image could not be prepared. Try a smaller photo or a different file.');
     } finally {
       setImageLoading(false);
       event.target.value = '';
@@ -383,10 +440,10 @@ function EditorPanel({ template, data, updateTemplate, resetActive, setImageLoad
   };
 
   return (
-    <aside className="rounded-lg border border-ink-800/10 bg-white p-4 shadow-warm">
+    <aside className="app-panel rounded-lg border p-4 shadow-warm">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-ink-800/60">
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-plum-300">
             <SlidersHorizontal size={15} /> Editor
           </p>
           <h2 className="mt-1 font-display text-2xl font-bold">{template.name}</h2>
@@ -461,19 +518,79 @@ function EditorPanel({ template, data, updateTemplate, resetActive, setImageLoad
           </section>
         )}
 
+        {template.secondaryPng && (
+          <section>
+            <h3 className="editor-heading"><ImagePlus size={15} /> Main Cover Cutout</h3>
+            <label className="upload-box">
+              <input
+                accept="image/png"
+                disabled={data.imageLoading}
+                type="file"
+                onChange={(event) => uploadImage(event, { field: 'secondaryImage', pngOnly: true, compress: false })}
+              />
+              {data.imageLoading ? <BrushClockLoader compact /> : <ImagePlus size={20} />}
+              <span>{data.imageLoading ? 'Preparing PNG...' : 'Replace secondary PNG cutout'}</span>
+            </label>
+            {data.secondaryImage && (
+              <button className="clear-button" type="button" onClick={() => updateTemplate({ secondaryImage: '' })}>
+                Clear secondary image
+              </button>
+            )}
+            <p className="mt-2 text-xs leading-5 text-ink-800/55">
+              PNG only, so knocked-out backgrounds and transparency stay clean.
+            </p>
+          </section>
+        )}
+
         <section>
           <h3 className="editor-heading"><Palette size={15} /> Colors</h3>
           <div className="grid grid-cols-2 gap-3">
             {getColorFields(template, data).map((field) => (
-              <label key={field} className="color-label">
-                <span>{labelize(field)}</span>
-                <input type="color" value={data[field]} onChange={(event) => setField(field, event.target.value)} />
-              </label>
+              <PaletteDropdown
+                key={field}
+                field={field}
+                isOpen={openColorField === field}
+                onChange={(value) => {
+                  setField(field, value);
+                  setOpenColorField(null);
+                }}
+                onToggle={() => setOpenColorField((current) => (current === field ? null : field))}
+                value={data[field]}
+              />
             ))}
           </div>
         </section>
       </div>
     </aside>
+  );
+}
+
+function PaletteDropdown({ field, value, isOpen, onToggle, onChange }) {
+  const selected = getPaletteOption(value);
+  return (
+    <div className="color-label palette-dropdown">
+      <span>{labelize(field)}</span>
+      <button className="palette-trigger" type="button" onClick={onToggle}>
+        <i style={{ background: selected[1] }} />
+        <span>{selected[0]}</span>
+      </button>
+      {isOpen && (
+        <div className="palette-menu">
+          {PALETTE_OPTIONS.map(([name, color]) => (
+            <button
+              key={`${field}-${color}`}
+              className={`palette-option ${color === value ? 'active' : ''}`}
+              type="button"
+              onClick={() => onChange(color)}
+              title={name}
+            >
+              <i style={{ background: color }} />
+              <span>{name}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -572,8 +689,30 @@ function Deco({ name, height, color, opacity = 1, rotate = 0, style = {} }) {
   );
 }
 
-function Mark({ width = 92, style = {} }) {
-  return <img src={`${LOGO}pause-mark.svg`} width={width} style={{ display: 'block', flex: 'none', ...style }} alt="" />;
+function MaskedAsset({ src, width, height, color = palette.ivory50, style = {} }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        background: color,
+        display: 'block',
+        flex: 'none',
+        height,
+        maskImage: `url("${src}")`,
+        maskRepeat: 'no-repeat',
+        maskSize: 'contain',
+        WebkitMaskImage: `url("${src}")`,
+        WebkitMaskRepeat: 'no-repeat',
+        WebkitMaskSize: 'contain',
+        width,
+        ...style,
+      }}
+    />
+  );
+}
+
+function Mark({ width = 92, color = palette.ivory50, style = {} }) {
+  return <MaskedAsset src={`${LOGO}pause-mark.svg`} width={width} height={width * 0.54} color={color} style={style} />;
 }
 
 function PauseBars({ height = 30, color = palette.plum500, style = {} }) {
@@ -626,21 +765,110 @@ function BrushClockLoader({ compact = false }) {
   );
 }
 
-function Logo({ variant = 'pause-logo-ivory.svg', style, alt = '' }) {
+function Logo({ variant = 'pause-logo-ivory.svg', color, style = {}, alt = '' }) {
+  if (color) {
+    return <MaskedAsset src={`${LOGO}${variant}`} width={style.width || 160} height={style.height || (style.width || 160) * 0.84} color={color} style={style} />;
+  }
   return <img src={`${LOGO}${variant}`} style={style} alt={alt} />;
+}
+
+function TwoColorLogo({ primary = palette.ivory50, secondary = palette.plum500, style = {} }) {
+  const width = style.width || 620;
+  const height = style.height || width * 0.84;
+  return (
+    <span style={{ display: 'block', height, position: 'relative', width, ...style }}>
+      <MaskedAsset src={`${LOGO}pause-logo-primary-mask.svg`} width="100%" height="100%" color={primary} style={{ position: 'absolute', inset: 0 }} />
+      <MaskedAsset src={`${LOGO}pause-logo-secondary-mask.svg`} width="100%" height="100%" color={secondary} style={{ position: 'absolute', inset: 0 }} />
+    </span>
+  );
+}
+
+function LogoAvatar({ data, style = {} }) {
+  return (
+    <div
+      style={{
+        alignItems: 'center',
+        backdropFilter: 'blur(12px)',
+        background: `linear-gradient(145deg, ${data.bg}f2, rgba(20,18,20,0.86))`,
+        border: `2px solid ${data.accentSoft}55`,
+        borderRadius: 34,
+        boxShadow: '0 22px 54px rgba(0,0,0,0.42), 0 0 0 8px rgba(244,238,226,0.035)',
+        display: 'flex',
+        height: 178,
+        justifyContent: 'center',
+        overflow: 'hidden',
+        width: 178,
+        WebkitBackdropFilter: 'blur(12px)',
+        ...style,
+      }}
+    >
+      <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 118 }} />
+    </div>
+  );
+}
+
+function KickerPill({ children, data, style = {} }) {
+  return (
+    <span
+      style={{
+        backdropFilter: 'blur(14px)',
+        background: data.pillBg || 'rgba(20,18,20,0.9)',
+        border: `2px solid ${data.pillText || data.accent}`,
+        borderRadius: 999,
+        boxShadow: '0 18px 42px rgba(0,0,0,0.46), 0 0 24px rgba(126,68,180,0.2)',
+        color: data.pillText || data.accentWarm,
+        display: 'inline-flex',
+        fontFamily: 'var(--font-meta)',
+        fontSize: 22,
+        fontWeight: 700,
+        letterSpacing: '0.18em',
+        padding: '9px 20px',
+        textTransform: 'uppercase',
+        WebkitBackdropFilter: 'blur(14px)',
+        ...style,
+      }}
+    >
+      {children}
+    </span>
+  );
 }
 
 function KickerDash({ children, data }) {
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 14, fontFamily: 'var(--font-meta)', fontSize: 20, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: data.accentWarm }}>
-      <span style={{ width: 32, height: 2, background: 'currentColor' }} />{children}
+      <Deco name="brush-rule" height={10} color="currentColor" />{children}
+    </span>
+  );
+}
+
+function EpisodePill({ children, data, style = {} }) {
+  return (
+    <span
+      style={{
+        backdropFilter: 'blur(14px)',
+        background: 'rgba(20,18,20,0.9)',
+        border: `2px solid ${data.accent}`,
+        borderRadius: 999,
+        boxShadow: '0 18px 42px rgba(0,0,0,0.46), 0 0 24px rgba(126,68,180,0.2)',
+        color: data.accentSoft,
+        fontFamily: 'var(--font-meta)',
+        fontSize: 22,
+        fontWeight: 700,
+        letterSpacing: '0.16em',
+        padding: '8px 20px',
+        textTransform: 'uppercase',
+        WebkitBackdropFilter: 'blur(14px)',
+        ...style,
+      }}
+    >
+      {children}
     </span>
   );
 }
 
 function PodcastCover({ data }) {
   return (
-    <Template data={data} width={1080} height={1080} className="flex flex-col items-center justify-center">
+    <Template data={data} width={1080} height={1080}>
       <Texture kind="grain" opacity={0.8} />
       <Texture
         kind="arcs"
@@ -651,16 +879,20 @@ function PodcastCover({ data }) {
           WebkitMaskImage: 'radial-gradient(circle at center, transparent 38%, #000 78%)',
         }}
       />
-      <Deco name="corner-flourish" height={150} color={data.accent} opacity={0.55} style={{ position: 'absolute', top: 60, left: 60 }} />
-      <Deco name="corner-flourish" height={150} color={data.accent} opacity={0.55} rotate={180} style={{ position: 'absolute', bottom: 60, right: 60 }} />
-      <Logo variant="pause-logo-darkbg.svg" style={{ width: 620, position: 'relative' }} />
-      <div style={{ marginTop: 56, display: 'flex', alignItems: 'center', gap: 22, position: 'relative' }}>
-        <span style={{ width: 70, height: 2, background: data.accentSoft, opacity: 0.6 }} />
-        <span style={{ fontFamily: 'var(--font-meta)', fontSize: 26, letterSpacing: '0.34em', textTransform: 'uppercase', color: data.textBody }}>{data.host}</span>
-        <span style={{ width: 70, height: 2, background: data.accentSoft, opacity: 0.6 }} />
+      {data.secondaryImage && (
+        <div style={{ position: 'absolute', right: 0, bottom: 0, width: 410, height: 410, opacity: 0.94 }}>
+          <div style={{ position: 'absolute', inset: '20% -8% 0 8%', background: `radial-gradient(ellipse at center, rgba(126,68,180,0.22), transparent 68%)`, filter: 'blur(16px)' }} />
+          <img src={data.secondaryImage} style={{ position: 'absolute', right: 0, bottom: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'bottom right', filter: 'saturate(0.92) contrast(1.04)' }} alt="" />
+        </div>
+      )}
+      <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 740, maxWidth: '76%', position: 'absolute', left: '50%', top: 82, transform: 'translateX(-50%)', zIndex: 2 }} />
+      <div style={{ position: 'absolute', left: 88, bottom: 150, zIndex: 3 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 22, position: 'relative' }}>
+          <span style={{ fontFamily: 'var(--font-meta)', fontSize: 24, letterSpacing: '0.28em', textTransform: 'uppercase', color: data.textBody, whiteSpace: 'nowrap' }}>{data.host}</span>
+        </div>
+        <Deco name="brush-rule" height={14} color={data.accent} opacity={0.9} style={{ marginTop: 18 }} />
+        <p style={{ marginTop: 20, fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 35, lineHeight: 1.05, color: data.textMuted, position: 'relative', whiteSpace: 'nowrap' }}>{data.tagline}</p>
       </div>
-      <p style={{ marginTop: 30, fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 30, color: data.textMuted, position: 'relative' }}>{data.tagline}</p>
-      <Deco name="bars-divider" height={26} color={data.accentSoft} opacity={0.5} style={{ position: 'absolute', bottom: 96 }} />
     </Template>
   );
 }
@@ -672,17 +904,14 @@ function EpisodeCover({ data }) {
         <div style={{ height: 486, position: 'relative' }}>
           <Photo data={data} label="Guest Photo - Landscape" treatment="plum" />
           <Texture kind="ticks" opacity={0.5} blend="overlay" />
-          <Deco name="corner-flourish" height={110} color={data.accentWarm} opacity={0.7} style={{ position: 'absolute', top: 44, left: 44 }} />
-          <span style={{ position: 'absolute', top: 44, right: 44, fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: data.accentSoft, border: `2px solid ${data.accent}`, borderRadius: 999, padding: '8px 20px', background: 'rgba(20,18,20,0.4)' }}>{data.episode}</span>
+          <EpisodePill data={data} style={{ position: 'absolute', top: 44, right: 44 }}>{formatEpisodeBadge(data)}</EpisodePill>
           <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 60%, ${data.bg} 100%)` }} />
+          <LogoAvatar data={data} style={{ bottom: -88, left: 64, position: 'absolute', zIndex: 2 }} />
         </div>
-        <div style={{ flex: 1, padding: '54px 64px 64px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
+        <div style={{ flex: 1, padding: '78px 64px 64px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
           <Texture kind="arcs" opacity={0.4} />
           <div style={{ position: 'relative' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-              <KickerDash data={data}>{data.season}</KickerDash>
-              <Mark width={82} arc={data.accentSoft} bars={data.accent} />
-            </div>
+            <div style={{ height: 18, marginBottom: 18 }} />
             <h1 style={{ fontFamily: 'var(--font-editorial)', fontWeight: 500, fontSize: 74, lineHeight: 1.08, color: data.textStrong, margin: '0 0 22px' }}>{data.title}</h1>
             <Deco name="brush-rule" height={16} color={data.accent} style={{ marginBottom: 22 }} />
             <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 34, color: data.accentSoft, margin: 0 }}>{data.guest}</p>
@@ -698,17 +927,15 @@ function EpisodeCover({ data }) {
       <div style={{ width: '46%', position: 'relative' }}>
         <Photo data={data} label="Guest Photo - Vertical" treatment="plum" />
         <Texture kind="ticks" opacity={0.5} blend="overlay" />
-        <Deco name="corner-flourish" height={120} color={data.accentWarm} opacity={0.7} style={{ position: 'absolute', top: 48, left: 48 }} />
       </div>
       <div style={{ flex: 1, padding: '72px 64px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
         <Texture kind="arcs" opacity={0.45} />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <Mark width={92} arc={data.accentSoft} bars={data.accent} />
-          <span style={{ fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: data.accentSoft, border: `2px solid ${data.accent}`, borderRadius: 999, padding: '8px 20px' }}>{data.episode}</span>
+          <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 160, opacity: 0.9 }} />
+          <EpisodePill data={data}>{formatEpisodeBadge(data)}</EpisodePill>
         </div>
         <div>
-          <KickerDash data={data}>{data.season}</KickerDash>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', fontWeight: 500, fontSize: 78, lineHeight: 1.08, color: data.textStrong, margin: '22px 0 22px' }}>{data.title}</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', fontWeight: 500, fontSize: 78, lineHeight: 1.08, color: data.textStrong, margin: '0 0 22px' }}>{data.title}</h1>
           <Deco name="brush-rule" height={16} color={data.accent} style={{ marginBottom: 24 }} />
           <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 36, color: data.accentSoft, margin: 0 }}>{data.guest}</p>
         </div>
@@ -725,13 +952,11 @@ function GuestAnnouncement({ data }) {
         <div style={{ height: 632, position: 'relative' }}>
           <Photo data={data} label="Guest Photo - Landscape" treatment="plum" />
           <Texture kind="ticks" opacity={0.4} blend="overlay" />
-          <div style={{ position: 'absolute', top: 56, left: 56, right: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Mark width={84} arc={data.textStrong} bars={data.accentSoft} />
-            <span style={{ fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentWarm }}>{data.kicker}</span>
-          </div>
-          <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 64%, ${data.bg} 100%)` }} />
+          <KickerPill data={data} style={{ position: 'absolute', top: 56, right: 56 }}>{data.kicker}</KickerPill>
+          <div style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: -1, background: `linear-gradient(to bottom, transparent 64%, ${data.bg} 100%)` }} />
+          <LogoAvatar data={data} style={{ bottom: -88, left: 64, position: 'absolute', zIndex: 2 }} />
         </div>
-        <div style={{ flex: 1, padding: '0 64px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+        <div style={{ flex: 1, padding: '78px 64px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
           <Texture kind="grain" opacity={0.7} />
           <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
@@ -750,11 +975,9 @@ function GuestAnnouncement({ data }) {
     <Template data={data} width={1080} height={1080}>
       <Photo data={data} label="Guest Photo - Vertical" treatment="plum" />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(20,18,20,0.96) 18%, rgba(20,18,20,0.2) 55%, rgba(20,18,20,0.55) 100%)' }} />
-      <div style={{ position: 'absolute', top: 56, left: 56, right: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Mark width={84} arc={data.textStrong} bars={data.accentSoft} />
-        <span style={{ fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentWarm }}>{data.kicker}</span>
-      </div>
+      <KickerPill data={data} style={{ position: 'absolute', top: 56, right: 56 }}>{data.kicker}</KickerPill>
       <div style={{ position: 'absolute', left: 64, right: 64, bottom: 72 }}>
+        <LogoAvatar data={data} style={{ marginBottom: 30 }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 24, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentSoft }}>{data.label}</span>
           <Deco name="tick-strip" height={18} color={data.accentWarm} opacity={0.8} />
@@ -770,7 +993,6 @@ function QuoteCard({ data }) {
   return (
     <Template data={data} width={1080} height={1080} className="flex flex-col justify-center" style={{ padding: 96 }}>
       <Texture kind="grain" opacity={0.85} />
-      <Deco name="corner-flourish" height={140} color={data.accent} opacity={0.6} rotate={90} style={{ position: 'absolute', top: 70, right: 70 }} />
       <Deco name="sound-bars" height={120} color={data.accent} opacity={0.25} style={{ position: 'absolute', bottom: 76, left: 96 }} />
       <div style={{ position: 'relative' }}>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 200, lineHeight: 0.6, color: data.accent, display: 'block', height: 110 }}>&ldquo;</span>
@@ -784,7 +1006,7 @@ function QuoteCard({ data }) {
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 26, color: data.textBody }}>{data.author} · <span style={{ color: data.textMuted }}>{data.meta}</span></span>
         </div>
       </div>
-      <Logo variant="pause-logo-ivory.svg" style={{ position: 'absolute', bottom: 64, right: 96, width: 150, opacity: 0.9 }} />
+      <TwoColorLogo primary={data.logoColor} secondary={data.accent} style={{ position: 'absolute', top: 64, right: 96, width: 180, opacity: 0.9 }} />
     </Template>
   );
 }
@@ -793,17 +1015,15 @@ function PausePrompt({ data }) {
   return (
     <Template data={data} width={1080} height={1080} className="flex flex-col items-center justify-center text-center" style={{ padding: 110 }}>
       <Texture kind="arcs" opacity={0.6} />
-      <Deco name="corner-flourish" height={130} color={data.accent} opacity={0.6} style={{ position: 'absolute', top: 64, left: 64 }} />
-      <Deco name="corner-flourish" height={130} color={data.accent} opacity={0.6} rotate={180} style={{ position: 'absolute', bottom: 64, right: 64 }} />
       <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img src={`${LOGO}clock-arc.svg`} style={{ width: 260, opacity: 0.9 }} alt="" />
+        <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 240, opacity: 0.92 }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, margin: '40px 0 30px' }}>
           <Deco name="tick-strip" height={16} color={data.accentWarm} opacity={0.7} />
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 26, fontWeight: 600, letterSpacing: '0.28em', textTransform: 'uppercase', color: data.accentWarm }}>{data.kicker}</span>
           <Deco name="tick-strip" height={16} color={data.accentWarm} opacity={0.7} />
         </div>
         <h1 style={{ fontFamily: 'var(--font-editorial)', fontWeight: 500, fontSize: 70, lineHeight: 1.22, color: data.textStrong, margin: 0, maxWidth: 860 }}>{data.prompt}</h1>
-        <Logo variant="pause-logo-ivory.svg" style={{ width: 130, marginTop: 64, opacity: 0.85 }} />
+        <Deco name="bars-divider" height={26} color={data.logoSecondary} opacity={0.7} style={{ marginTop: 64 }} />
       </div>
     </Template>
   );
@@ -813,9 +1033,8 @@ function NewEpisodeLive({ data }) {
   return (
     <Template data={data} width={1080} height={1080} className="flex flex-col justify-between" style={{ padding: 80 }}>
       <Texture kind="ticks" opacity={0.6} />
-      <Deco name="corner-flourish" height={120} color={data.accent} opacity={0.5} rotate={90} style={{ position: 'absolute', top: 64, right: 64 }} />
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Logo variant="pause-logo-ivory.svg" style={{ width: 200 }} />
+        <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 200 }} />
         <span style={{ fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: palette.ink900, background: data.accentWarm, borderRadius: 999, padding: '12px 26px' }}>{data.badge}</span>
       </div>
       <div style={{ position: 'relative' }}>
@@ -837,9 +1056,8 @@ function Audiogram({ data }) {
   return (
     <Template data={data} width={1080} height={1080} className="flex flex-col justify-between" style={{ padding: 80 }}>
       <Texture kind="grain" opacity={0.8} />
-      <Deco name="corner-flourish" height={120} color={data.accent} opacity={0.55} rotate={180} style={{ position: 'absolute', bottom: 60, right: 60 }} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
-        <Mark width={80} arc={data.textStrong} bars={data.accentSoft} />
+        <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 150, opacity: 0.9 }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <Deco name="tick-strip" height={16} color={data.accentWarm} opacity={0.7} />
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: data.accentSoft }}>{data.meta}</span>
@@ -850,9 +1068,8 @@ function Audiogram({ data }) {
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 9, height: 120, marginBottom: 28 }}>
           {bars.map((height, index) => <span key={index} style={{ flex: 1, height: `${height}%`, background: index % 3 === 0 ? data.accent : data.accentSoft, borderRadius: 6 }} />)}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 24, color: data.textMuted }}>{data.guest}</span>
-          <Logo variant="pause-logo-ivory.svg" style={{ width: 130, opacity: 0.85 }} />
         </div>
       </div>
     </Template>
@@ -866,17 +1083,13 @@ function YouTubeThumbnail({ data }) {
         <Photo data={data} label="Guest Photo - Landscape" treatment="plum" />
         <Texture kind="ticks" opacity={0.35} blend="overlay" />
         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${data.bg} 30%, rgba(18,16,20,0.45) 62%, transparent 100%)` }} />
-        <Deco name="corner-flourish" height={104} color={data.accentWarm} opacity={0.6} rotate={90} style={{ position: 'absolute', top: 40, right: 40 }} />
         <div style={{ position: 'absolute', inset: 0, padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '66%' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16, fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentSoft }}>
             <PauseBars height={30} color={data.accent} /> {data.meta}
           </span>
           <h1 style={{ whiteSpace: 'pre-line', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 86, lineHeight: 0.98, color: data.textStrong, margin: '24px 0 26px' }}>{data.title}</h1>
           <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 36, color: data.accentSoft, margin: 0 }}>{data.guest}</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 28, marginTop: 44 }}>
-            <Logo variant="pause-logo-ivory.svg" style={{ width: 150, opacity: 0.85 }} />
-            <Deco name="sound-bars" height={42} color={data.accentSoft} opacity={0.65} />
-          </div>
+          <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 150, marginTop: 44, opacity: 0.85 }} />
         </div>
       </Template>
     );
@@ -886,16 +1099,12 @@ function YouTubeThumbnail({ data }) {
     <Template data={data} width={1280} height={720} className="flex">
       <div style={{ flex: 1, padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
         <Texture kind="grain" opacity={0.7} />
-        <Deco name="corner-flourish" height={110} color={data.accent} opacity={0.55} style={{ position: 'absolute', top: 40, left: 40 }} />
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16, fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentSoft }}>
           <PauseBars height={30} color={data.accent} /> {data.meta}
         </span>
         <h1 style={{ whiteSpace: 'pre-line', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 88, lineHeight: 0.98, color: data.textStrong, margin: '24px 0 26px' }}>{data.title}</h1>
         <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 38, color: data.accentSoft, margin: 0 }}>{data.guest}</p>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 28, marginTop: 48, position: 'relative' }}>
-          <Logo variant="pause-logo-ivory.svg" style={{ width: 150, opacity: 0.85 }} />
-          <Deco name="sound-bars" height={42} color={data.accentSoft} opacity={0.65} />
-        </div>
+        <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 150, marginTop: 48, opacity: 0.85, position: 'relative' }} />
       </div>
       <div style={{ width: 460, position: 'relative' }}>
         <Photo data={data} label="Guest Photo - Vertical" treatment="plum" />
@@ -912,7 +1121,7 @@ function InstagramStory({ data }) {
       <Template data={data} width={1080} height={1920} className="flex flex-col" style={{ background: data.bg }}>
         <Texture kind="arcs" opacity={0.5} />
         <div style={{ padding: '90px 72px 0', textAlign: 'center', position: 'relative' }}>
-          <Logo variant="pause-logo-ivory.svg" style={{ width: 220 }} />
+          <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 220, margin: '0 auto' }} />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
             <Deco name="tick-strip" height={20} color={data.accentWarm} opacity={0.8} />
           </div>
@@ -920,7 +1129,6 @@ function InstagramStory({ data }) {
         <div style={{ margin: '76px 72px 0', height: 620, borderRadius: 36, overflow: 'hidden', position: 'relative' }}>
           <Photo data={data} label="Guest Photo - Landscape" treatment="plum" />
           <Texture kind="ticks" opacity={0.35} blend="overlay" />
-          <Deco name="corner-flourish" height={110} color={data.accentWarm} opacity={0.75} style={{ position: 'absolute', top: 40, left: 40 }} />
         </div>
         <div style={{ padding: '64px 72px 0', position: 'relative', flex: 1 }}>
           <span style={{ fontFamily: 'var(--font-meta)', fontSize: 26, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentWarm }}>{data.kicker}</span>
@@ -939,7 +1147,7 @@ function InstagramStory({ data }) {
     <Template data={data} width={1080} height={1920} className="flex flex-col" style={{ background: data.bg }}>
       <Texture kind="arcs" opacity={0.5} />
       <div style={{ padding: '90px 72px 0', textAlign: 'center', position: 'relative' }}>
-        <Logo variant="pause-logo-ivory.svg" style={{ width: 220 }} />
+        <TwoColorLogo primary={data.logoPrimary} secondary={data.logoSecondary} style={{ width: 220, margin: '0 auto' }} />
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
           <Deco name="tick-strip" height={20} color={data.accentWarm} opacity={0.8} />
         </div>
@@ -947,10 +1155,9 @@ function InstagramStory({ data }) {
       <div style={{ flex: 1, margin: '70px 72px', borderRadius: 36, overflow: 'hidden', position: 'relative' }}>
         <Photo data={data} label="Guest Photo - Vertical" treatment="plum" />
         <Texture kind="ticks" opacity={0.35} blend="overlay" />
-        <Deco name="corner-flourish" height={120} color={data.accentWarm} opacity={0.75} style={{ position: 'absolute', top: 40, left: 40 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(24,18,31,0.95) 12%, transparent 55%)' }} />
         <div style={{ position: 'absolute', left: 56, right: 56, bottom: 64 }}>
-          <span style={{ fontFamily: 'var(--font-meta)', fontSize: 26, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentWarm }}>{data.kicker}</span>
+          <KickerPill data={data} style={{ fontSize: 24 }}>{data.kicker}</KickerPill>
           <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 96, lineHeight: 0.98, color: data.textStrong, margin: '16px 0 0' }}>{data.guest}</h1>
         </div>
       </div>
@@ -1040,20 +1247,19 @@ function Styleguide() {
     ['Brush Rule', 'brush-rule.svg'],
     ['Tick Strip', 'tick-strip.svg'],
     ['Sound Bars', 'sound-bars.svg'],
-    ['Corner Flourish', 'corner-flourish.svg'],
     ['Bars Divider', 'bars-divider.svg'],
   ];
 
   const templatePatterns = [
-    ['Main Podcast Cover', 'grain-dots.svg, arc-scallops.svg, corner-flourish.svg, bars-divider.svg, pause-logo-darkbg.svg', 'Primary square brand cover with centered logo, hosted-by line, editorial tagline, radial-masked arc texture, logo-derived corner flourishes, and bottom bars divider.'],
-    ['Quote Card', 'grain-dots.svg, corner-flourish.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Editorial quote stack with purple quote mark, brush underline, author/meta row, bottom-left audio bars, and bottom-right logo.'],
-    ['New Episode Is Live', 'tick-field.svg, corner-flourish.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Launch announcement with top logo/badge, editorial title, brush underline, circular play control, CTA copy, and right-aligned sound bars.'],
-    ['Pause Prompt', 'arc-scallops.svg, corner-flourish.svg, tick-strip.svg, clock-arc.svg, pause-logo-ivory.svg', 'Centered ceremonial prompt with scallop texture, paired corner flourishes, clock arc, mirrored tick strips, and small logo lockup.'],
-    ['Audiogram Cover', 'grain-dots.svg, corner-flourish.svg, tick-strip.svg, inline Pause mark, pause-logo-ivory.svg', 'Audio quote card with top mark/meta row, editorial pull quote, waveform bars, speaker name, and bottom-right logo.'],
-    ['Episode Cover', 'tick-field.svg, arc-scallops.svg, corner-flourish.svg, brush-rule.svg, inline Pause mark', 'Supports vertical and horizontal image orientations with protected photo areas and editorial episode copy.'],
+    ['Main Podcast Cover', 'grain-dots.svg, arc-scallops.svg, brush-rule.svg, pause-logo-darkbg.svg, PNG cutout image', 'Primary square brand cover with dominant logo, hosted-by line, brush divider, editorial tagline, secondary PNG cutout image, and radial-masked arc texture.'],
+    ['Quote Card', 'grain-dots.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Editorial quote stack with larger top-right two-color logo, purple quote mark, brush underline, author/meta row, and bottom-left audio bars.'],
+    ['New Episode Is Live', 'tick-field.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Launch announcement with top logo/badge, editorial title, brush underline, circular play control, CTA copy, and right-aligned sound bars.'],
+    ['Pause Prompt', 'arc-scallops.svg, tick-strip.svg, bars-divider.svg, pause-logo-ivory.svg', 'Centered inward-question template with scallop texture, full two-color logo, mirrored tick strips, and bottom pause divider.'],
+    ['Audiogram Cover', 'grain-dots.svg, tick-strip.svg, pause-logo-ivory.svg', 'Audio quote card with top full logo/meta row, editorial pull quote, waveform bars, and speaker name.'],
+    ['Episode Cover', 'tick-field.svg, arc-scallops.svg, brush-rule.svg, pause-logo-ivory.svg', 'Supports vertical and horizontal image orientations with protected photo areas, full logo header, right-aligned season marker, and editorial episode copy.'],
     ['Guest Announcement', 'tick-field.svg, grain-dots.svg, tick-strip.svg, inline Pause mark', 'Supports vertical and horizontal guest imagery with dark overlay protection and guest metadata lockup.'],
-    ['YouTube Thumbnail', 'grain-dots.svg, tick-field.svg, corner-flourish.svg, sound-bars.svg, pause-logo-ivory.svg', '16:9 layout with separate vertical-photo and horizontal-photo variants, large display headline, and audio identity row.'],
-    ['Instagram Story', 'arc-scallops.svg, tick-field.svg, tick-strip.svg, corner-flourish.svg, brush-rule.svg, pause-logo-ivory.svg', '9:16 story system with logo header, photo frame, guest text, and amber CTA pill.'],
+    ['YouTube Thumbnail', 'grain-dots.svg, tick-field.svg, pause-logo-ivory.svg', '16:9 layout with separate vertical-photo and horizontal-photo variants, large display headline, and logo identity row.'],
+    ['Instagram Story', 'arc-scallops.svg, tick-field.svg, tick-strip.svg, brush-rule.svg, pause-logo-ivory.svg', '9:16 story system with centered two-color logo header, photo frame, guest text, and amber CTA pill.'],
   ];
 
   return (
@@ -1190,7 +1396,6 @@ function Styleguide() {
           </div>
           <div className="texture-example">
             <TextureLayer type="grain-dots.svg" opacity={0.14} size={80} />
-            <img src={`${DECORATION}corner-flourish.svg`} className="texture-corner" alt="" />
             <img src={`${DECORATION}tick-strip.svg`} className="texture-ticks" alt="" />
             <p>Episode 47 · Season 3</p>
             <h3>Some of the best things came right after I stopped trying so hard.</h3>
@@ -1239,6 +1444,7 @@ function Styleguide() {
             <p>Use one focal point, generous margins, and a single warm amber spark. Keep long copy left-aligned and ceremonial prompts centered.</p>
             <p>Uploaded portraits should feel natural, warm, honest, and slightly cinematic. The app adds dark protection overlays where type sits on photography.</p>
             <p>Export sizes: 1080 square, 1080 x 1920 story, and 1280 x 720 YouTube thumbnail. Keep type at least 64px from square edges and 120px from story bottom UI areas.</p>
+            <p>Every template with a logo or mark exposes logo color controls so the identity can maintain contrast when backgrounds change. Color choices should stay inside the documented brand palette.</p>
           </div>
         </section>
       </div>
@@ -1259,6 +1465,16 @@ function readFileAsDataUrl(file) {
   });
 }
 
+function getPaletteOption(value) {
+  return PALETTE_OPTIONS.find(([, color]) => color === value) || ['Custom', value];
+}
+
+function formatEpisodeBadge(data) {
+  const seasonNumber = data.season.match(/\d+/)?.[0];
+  const season = seasonNumber ? `S${seasonNumber}` : data.season;
+  return `${season} - ${data.episode}`;
+}
+
 function getInitialValues() {
   try {
     const saved = sessionStorage.getItem('pause-builder-state');
@@ -1270,6 +1486,10 @@ function getInitialValues() {
           if (savedTemplate.host === 'With Brandon Commodore') savedTemplate.host = MAIN_COVER_HOST;
           if (savedTemplate.host === 'Hosted by') savedTemplate.host = MAIN_COVER_HOST;
           if (savedTemplate.tagline === 'where introspection meets ambition') savedTemplate.tagline = MAIN_COVER_TAGLINE;
+          if (savedTemplate.secondaryImage === undefined) savedTemplate.secondaryImage = MAIN_COVER_SECONDARY_IMAGE;
+        }
+        if (id === 'pausePrompt' && savedTemplate.kicker === 'Pause Prompt') {
+          savedTemplate.kicker = 'Inner Question';
         }
         return [
           id,

@@ -1,0 +1,19 @@
+---
+description: Pause Asset Builder brand, template, and handoff rules
+alwaysApply: true
+---
+
+# Pause Asset Builder Rules
+
+This repo is in a client-handoff state. Before changing templates, builder UI, colors, logos, uploads, or styleguide content, read `AI_GENERATION_RULES.md`.
+
+Core rules:
+
+- Preserve the current branded direction: warm analog podcast assets, dark plum/near-black app chrome, ivory text, lavender metadata, amber accents.
+- Use only the existing design-system palette for user-facing color controls. Do not add freeform color pickers.
+- Keep preview/export templates visually isolated from the surrounding builder UI. Dark mode applies outside the preview container unless the user asks to alter exported artwork.
+- Use existing brand assets and components: `TwoColorLogo`, `LogoAvatar`, `KickerPill`, `Texture`, `Deco`, `PaletteDropdown`, and `BrushClockLoader`.
+- Do not reintroduce corner flourishes.
+- For horizontal Episode Cover and Guest Announcement photo layouts, keep the rounded-square `LogoAvatar` as the logo treatment and avoid duplicate standalone logos.
+- Preserve image compression for uploads and PNG transparency for Main Cover cutouts.
+- After substantive edits, run `npm run build` and check lints for changed files.
