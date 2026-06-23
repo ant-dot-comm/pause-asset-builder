@@ -1077,9 +1077,9 @@ function YouTubeThumbnail({ data }) {
   if (data.orientation === 'landscape') {
     return (
       <Template data={data} width={1280} height={720} style={{ background: data.bg }}>
-        <Photo data={data} label="Guest Photo - Landscape" treatment="plum" />
+        <Photo data={data} label="Guest Photo - Landscape" treatment="plum" style={{ margin: -1, width: 'calc(100% + 2px)', height: 'calc(100% + 2px)' }} />
         <Texture kind="ticks" opacity={0.35} blend="overlay" />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${data.bg} 30%, rgba(18,16,20,0.45) 62%, transparent 100%)` }} />
+        <div style={{ position: 'absolute', inset: -1, background: `linear-gradient(to right, ${data.bg} 30%, rgba(18,16,20,0.45) 62%, transparent 100%)` }} />
         <div style={{ position: 'absolute', inset: 0, padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '66%' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16, fontFamily: 'var(--font-meta)', fontSize: 22, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: data.accentSoft }}>
             <PauseBars height={30} color={data.accent} /> {data.meta}
@@ -1106,7 +1106,7 @@ function YouTubeThumbnail({ data }) {
       <div style={{ width: 460, position: 'relative' }}>
         <Photo data={data} label="Guest Photo - Vertical" treatment="plum" />
         <Texture kind="ticks" opacity={0.4} blend="overlay" />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${data.bg} 0%, transparent 28%)` }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: -1, right: 0, background: `linear-gradient(to right, ${data.bg} 0%, transparent 28%)` }} />
       </div>
     </Template>
   );
@@ -1248,15 +1248,15 @@ function Styleguide() {
   ];
 
   const templatePatterns = [
-    ['Main Podcast Cover', 'grain-dots.svg, arc-scallops.svg, brush-rule.svg, pause-logo-darkbg.svg, PNG cutout image', 'Primary square brand cover with dominant logo, hosted-by line, brush divider, editorial tagline, secondary PNG cutout image, and radial-masked arc texture.'],
-    ['Quote Card', 'grain-dots.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Editorial quote stack with larger top-right two-color logo, purple quote mark, brush underline, author/meta row, and bottom-left audio bars.'],
-    ['New Episode Is Live', 'tick-field.svg, brush-rule.svg, sound-bars.svg, pause-logo-ivory.svg', 'Launch announcement with top logo/badge, editorial title, brush underline, circular play control, CTA copy, and right-aligned sound bars.'],
-    ['Pause Prompt', 'arc-scallops.svg, tick-strip.svg, bars-divider.svg, pause-logo-ivory.svg', 'Centered inward-question template with scallop texture, full two-color logo, mirrored tick strips, and bottom pause divider.'],
-    ['Audiogram Cover', 'grain-dots.svg, tick-strip.svg, pause-logo-ivory.svg', 'Audio quote card with top full logo/meta row, editorial pull quote, waveform bars, and speaker name.'],
-    ['Episode Cover', 'tick-field.svg, arc-scallops.svg, brush-rule.svg, pause-logo-ivory.svg', 'Supports vertical and horizontal image orientations with protected photo areas, full logo header, right-aligned season marker, and editorial episode copy.'],
-    ['Guest Announcement', 'tick-field.svg, grain-dots.svg, tick-strip.svg, inline Pause mark', 'Supports vertical and horizontal guest imagery with dark overlay protection and guest metadata lockup.'],
-    ['YouTube Thumbnail', 'grain-dots.svg, tick-field.svg, pause-logo-ivory.svg', '16:9 layout with separate vertical-photo and horizontal-photo variants, large display headline, and logo identity row.'],
-    ['Instagram Story', 'arc-scallops.svg, tick-field.svg, tick-strip.svg, brush-rule.svg, pause-logo-ivory.svg', '9:16 story system with centered two-color logo header, photo frame, guest text, and amber CTA pill.'],
+    ['Main Podcast Cover', 'Primary square cover with dominant logo, hosted-by line, brush divider, editorial tagline, and optional flush-right PNG cutout.'],
+    ['Quote Card', 'Left-aligned editorial quote stack with top-right two-color logo, purple quote mark, brush underline, author/meta row, and audio bars.'],
+    ['New Episode Is Live', 'Launch announcement with top logo/badge, large editorial title, brush underline, play control, CTA, and restrained audio rhythm.'],
+    ['Pause Prompt', 'Centered inward-question template with full two-color logo, mirrored tick strips, and bottom pause divider.'],
+    ['Audiogram Cover', 'Audio quote card with top full logo/meta row, editorial pull quote, waveform bars, and speaker name.'],
+    ['Episode Cover', 'Vertical and horizontal photo layouts with optional imagery, protected type, contained horizontal logo badge, and editorial episode copy.'],
+    ['Guest Announcement', 'Guest imagery can be vertical or horizontal, with blurred kicker pill, rounded-square logo badge, and dark overlay protection.'],
+    ['YouTube Thumbnail', '16:9 vertical-photo and horizontal-photo variants with large display headline, optional image space, and logo identity row.'],
+    ['Instagram Story', '9:16 story system with centered two-color logo header, optional photo frame, guest text, and amber CTA pill.'],
   ];
 
   return (
@@ -1269,75 +1269,80 @@ function Styleguide() {
       <div className="grid gap-6">
         <section className="style-section style-section-dark">
           <h2>Buttons</h2>
-          <div className="component-row">
-            <button className="sg-button sg-button-primary">Listen now</button>
-            <button className="sg-button sg-button-secondary">Browse episodes</button>
-            <button className="sg-button sg-button-link">Pause</button>
-            <button className="sg-button sg-button-warm">Subscribe</button>
-            <button className="sg-button sg-button-small">Small</button>
-            <button className="sg-button sg-button-disabled" disabled>Disabled</button>
-          </div>
-          <h3>Badges & Tags</h3>
-          <div className="component-row">
-            <span className="sg-tag sg-tag-outline-purple">Episode 47</span>
-            <span className="sg-tag sg-tag-warm">New</span>
-            <span className="sg-tag sg-tag-outline">Season 3</span>
-            <span className="sg-tag sg-tag-outline">Discipline</span>
-            <span className="sg-tag sg-tag-solid">Jazz</span>
-            <span className="sg-tag sg-tag-outline">Failure</span>
-          </div>
-          <h3>Kickers & Divider</h3>
-          <div className="component-row">
-            <span className="sg-kicker"><i />New episode · every Tuesday</span>
-            <span className="sg-kicker sg-kicker-warm"><i />Pause prompt</span>
-            <span className="sg-bars-divider"><span /><img src={`${DECORATION}bars-divider.svg`} alt="" /><span /></span>
-          </div>
-          <h3>Avatars, Icon Buttons & Mark</h3>
-          <div className="component-row">
-            <span className="sg-avatar sg-avatar-ring">BC</span>
-            <span className="sg-avatar">MO</span>
-            <button className="sg-icon sg-icon-primary">▶</button>
-            <button className="sg-icon sg-icon-quiet">"</button>
-            <button className="sg-icon sg-icon-outline">↗</button>
-            <img src={`${LOGO}pause-mark.svg`} className="h-14" alt="" />
-          </div>
-          <h3>Input + Card</h3>
-          <div className="sg-input-row"><span>your@email.com</span><b>...</b></div>
-          <div className="sg-card-sample">
-            <span className="sg-card-notch" />
-            <p>— Episode 47 · Season 3</p>
-            <strong>The Discipline Behind the Drift</strong>
-            <span>with Maya Okonkwo — on craft, doubt, and showing up anyway.</span>
+          <div className="sg-component-grid">
+            <div className="sg-component-card">
+              <h3>Actions</h3>
+              <div className="component-row">
+                <button className="sg-button sg-button-primary">Listen now</button>
+                <button className="sg-button sg-button-secondary">Browse episodes</button>
+                <button className="sg-button sg-button-link">Pause</button>
+                <button className="sg-button sg-button-warm">Subscribe</button>
+                <button className="sg-button sg-button-small">Small</button>
+                <button className="sg-button sg-button-disabled" disabled>Disabled</button>
+              </div>
+            </div>
+            <div className="sg-component-card">
+              <h3>Tags</h3>
+              <div className="component-row">
+                <span className="sg-tag sg-tag-outline-purple">Episode 47</span>
+                <span className="sg-tag sg-tag-warm">New</span>
+                <span className="sg-tag sg-tag-outline">Season 3</span>
+                <span className="sg-tag sg-tag-outline">Discipline</span>
+                <span className="sg-tag sg-tag-solid">Jazz</span>
+              </div>
+            </div>
+            <div className="sg-component-card">
+              <h3>Kickers</h3>
+              <div className="component-row">
+                <span className="sg-kicker"><i />New episode · every Tuesday</span>
+                <span className="sg-kicker sg-kicker-warm"><i />Pause prompt</span>
+                <span className="sg-bars-divider"><span /><img src={`${DECORATION}bars-divider.svg`} alt="" /><span /></span>
+              </div>
+            </div>
+            <div className="sg-component-card">
+              <h3>Identity Bits</h3>
+              <div className="component-row">
+                <span className="sg-avatar sg-avatar-ring">BC</span>
+                <span className="sg-avatar">MO</span>
+                <button className="sg-icon sg-icon-primary">▶</button>
+                <button className="sg-icon sg-icon-quiet">"</button>
+                <button className="sg-icon sg-icon-outline">↗</button>
+                <img src={`${LOGO}pause-mark.svg`} className="h-14" alt="" />
+              </div>
+            </div>
+            <div className="sg-component-card sg-component-card-wide">
+              <h3>Input + Card</h3>
+              <div className="sg-input-row"><span>your@email.com</span><b>...</b></div>
+              <div className="sg-card-sample">
+                <span className="sg-card-notch" />
+                <p>— Episode 47 · Season 3</p>
+                <strong>The Discipline Behind the Drift</strong>
+                <span>with Maya Okonkwo — on craft, doubt, and showing up anyway.</span>
+              </div>
+            </div>
           </div>
         </section>
 
         <section className="style-section">
           <h2>Colors</h2>
-          <div className="grid gap-5">
-            {colorGroups.map((group) => (
-              <div key={group.title}>
-                <div className="mb-3">
-                  <h3 className="!mb-1 !text-base">{group.title}</h3>
-                  <p className="text-sm text-ink-800/60">{group.note}</p>
+          <div className="color-compact-grid">
+            {colorGroups.flatMap((group) =>
+              group.colors.map(([name, color, token]) => (
+                <div key={token} className="color-card color-card-compact">
+                  <div className="color-swatch" style={{ background: color }} />
+                  <div>
+                    <p>{name}</p>
+                    <code>{token}</code>
+                  </div>
                 </div>
-                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                  {group.colors.map(([name, color, token]) => (
-                    <div key={token} className="color-card">
-                      <div className="color-swatch" style={{ background: color }} />
-                      <p>{name}</p>
-                      <span>{color}</span>
-                      <code>{token}</code>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-            <div className="text-on-dark">
-              <p><strong>Strong — headlines & PAUSE</strong> <code>--text-strong #f4eee2</code></p>
-              <p><span>Body — warm paragraph tone</span> <code>--text-body #ddd3c4</code></p>
-              <p><em>Muted — captions, metadata, timestamps</em> <code>--text-muted #9a9088</code></p>
-              <p><small>Faint — disabled, hairline labels</small> <code>--text-faint #6a635d</code></p>
-            </div>
+              )),
+            )}
+          </div>
+          <div className="text-on-dark text-on-dark-compact">
+            <p><strong>Strong</strong> <code>--text-strong #f4eee2</code></p>
+            <p><span>Body</span> <code>--text-body #ddd3c4</code></p>
+            <p><em>Muted</em> <code>--text-muted #9a9088</code></p>
+            <p><small>Faint</small> <code>--text-faint #6a635d</code></p>
           </div>
         </section>
 
@@ -1381,7 +1386,7 @@ function Styleguide() {
 
         <section className="style-section style-section-dark">
           <h2>Texture</h2>
-          <p className="mb-5 text-ivory-50/65">Foreground motifs recolor through their SVG source and are used sparingly as layout rhythm.</p>
+          <p className="mb-5 text-ivory-50/65">Foreground motifs and tileable SVGs. Use one low-opacity layer per surface.</p>
           <div className="decoration-grid">
             {decorations.map(([name, file]) => (
               <div key={file}>
@@ -1391,20 +1396,7 @@ function Styleguide() {
               </div>
             ))}
           </div>
-          <div className="texture-example">
-            <TextureLayer type="grain-dots.svg" opacity={0.14} size={80} />
-            <img src={`${DECORATION}tick-strip.svg`} className="texture-ticks" alt="" />
-            <p>Episode 47 · Season 3</p>
-            <h3>Some of the best things came right after I stopped trying so hard.</h3>
-            <img src={`${DECORATION}brush-rule.svg`} className="texture-brush" alt="" />
-            <img src={`${DECORATION}sound-bars.svg`} className="texture-bars" alt="" />
-          </div>
-        </section>
-
-        <section className="style-section style-section-dark">
-          <h2>Seamless Textures</h2>
-          <p className="mb-5 text-ivory-50/65">Tileable SVGs for dark canvases. Use one layer per surface at low opacity.</p>
-          <div className="texture-grid">
+          <div className="texture-grid mt-6">
             {textures.map(([name, file, size, use]) => (
               <div key={file}>
                 <div className="texture-swatch" style={{ backgroundImage: `url("${TEXTURE}${file}")`, backgroundSize: size }} />
@@ -1414,21 +1406,15 @@ function Styleguide() {
               </div>
             ))}
           </div>
-          <div className="dot-pattern-doc">
-            <strong>Dot background pattern</strong>
-            <span>`grain-dots.svg`, tiled at 80px, baked ivory at very low opacity. Used on Main Cover, Quote Card, and documentation examples; the photo placeholder still uses a smaller inline dot grain for portrait areas.</span>
-          </div>
         </section>
 
         <section className="style-section">
           <h2>Template Pattern Map</h2>
-          <p className="mb-5 text-base leading-7 text-ink-800/65">Reference for which reusable assets and motifs belong to each coded template. Keep this updated whenever a template gains a new texture, decoration, logo, or layout pattern.</p>
-          <div className="grid gap-4">
-            {templatePatterns.map(([name, assets, guidance]) => (
+          <p className="mb-5 text-base leading-7 text-ink-800/65">Compact reference for the coded template system.</p>
+          <div className="grid gap-3 md:grid-cols-2">
+            {templatePatterns.map(([name, guidance]) => (
               <div key={name} className="rounded-lg border border-ink-800/10 bg-ivory-50 p-4">
                 <p className="font-display text-xl font-bold text-ink-900">{name}</p>
-                <p className="mt-2 font-body text-sm font-bold uppercase tracking-[0.14em] text-plum-700">Assets</p>
-                <p className="mt-1 font-body text-sm leading-6 text-ink-800/70">{assets}</p>
                 <p className="mt-2 font-body text-sm leading-6 text-ink-800/70">{guidance}</p>
               </div>
             ))}
